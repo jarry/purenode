@@ -7,7 +7,7 @@ class Router {
         response.writeHead(200, {
             "Content-Type": "text/html;charset=UTF-8"
         }); 
-        response.write("Hello，欢迎使用iQIYI中间层NodeJS服务器.");
+        response.write("Hello，欢迎使用PureNode中间层服务器.");
         response.end();
     }
 
@@ -16,7 +16,7 @@ class Router {
             "Content-Type": "text/html"
         }); 
         response.write("404 Not found. <br>");
-        response.write("<hr>pcw-api.iqiyi.com");
+        response.write("<hr>api.company.com");
         response.end();
     }
 
