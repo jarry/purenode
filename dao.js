@@ -3,8 +3,8 @@ const http = require('http');
 const querystring = require('querystring');
 const arrProto = Array.prototype;
 const config = {
-    'xxAuthHost': 'xx.xx.com',
-    'abHost': 'xx.xx.com'
+    'authHost': 'auth.hello.com',
+    'dataHost': 'data.hello.com'
 };
 class Dao {
 
@@ -40,8 +40,8 @@ class Dao {
         });
     }
 
-    httpGet(url) {
-        return this.httpInvoke('GET', url);
+    httpGet(url, options) {
+        return this.httpInvoke('GET', url, options);
     }
 
     httpPost(postData, options) {
@@ -57,16 +57,17 @@ class Dao {
     getUserInfo(params) {
         let path = '/auth-api/services/user/resources'
         params = params || { uid: 400000020, appName: 'lequ' };
-        let url = 'http://' + config.xxAuthHost + path + '?'+ querystring.stringify(params); 
+        // let url = 'http://auth.hello.com/auth-api/user/resources?uid=400000020&appName=pigeon';
+        let url = 'http://' + config.authHost + path + '?'+ querystring.stringify(params); 
         console.log('request url:', url);
         return this.httpGet(url);
     }
 
     getVideo(params) {
         let path = '/int/entity/nocache'
-        params = params || { uid: 400000020, appName: 'lequ' };
-        // let url = http://qipu.company.com/int/entity/nocache/597436100.json
-        let url = 'http://' + config.abHost + path + '/' + params.entityId + '.json'; 
+        params = params || { uid: 400000020, appName: 'lequ', entityId: 597436100 };
+        // let url = http://data.hello.com/entity/597436100.json
+        let url = 'http://' + config.dataHost + path + '/' + params.entityId + '.json'; 
         console.log('request url:', url);
         return this.httpGet(url);
     }

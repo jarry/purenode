@@ -71,6 +71,7 @@ class Service {
             console.log('[Service>getUserInfo]:[error]', error);
             callback.call(this, error);
         }); 
+        return userInfoResult;
     }
 
     getVideo(params, callback) {
@@ -92,7 +93,8 @@ class Service {
             result.code = 'error';
             callback.call(this, error);
             console.log('[Service>getVideo]:[error]', error);
-        }); 
+        });
+        return userInfoResult;
     }
 
 }
